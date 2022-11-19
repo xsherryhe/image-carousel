@@ -22,21 +22,7 @@ function imageCarousel(
     return img;
   });
 
-  // Make carousel long enough that at least one image is hidden off-stage so the carousel can 'spin'
-  /*
-  while (imgs.length < 3) {
-    const oldLength = imgs.length;
-    imgs.push(
-      ...imgs.map((img, i) => {
-        const imgCopy = img.cloneNode();
-        imgCopy.dataset.index = oldLength + i;
-        imgContainer.append(imgCopy);
-        return imgCopy;
-      })
-    );
-  }
-  */
-
+  const originalImageLength = imgs.length;
   const indexMarkerContainer = document.createElement('div');
   indexMarkerContainer.classList.add('carousel-index-markers');
   carousel.append(indexMarkerContainer);
@@ -49,6 +35,19 @@ function imageCarousel(
     indexMarkerContainer.append(indexMarker);
     return indexMarker;
   });
+
+  // Make carousel long enough that at least one image is hidden off-stage so the carousel can 'spin'
+  while (imgs.length < 3) {
+    const oldLength = imgs.length;
+    imgs.push(
+      ...imgs.map((img, i) => {
+        const imgCopy = img.cloneNode();
+        imgCopy.dataset.index = oldLength + i;
+        imgContainer.append(imgCopy);
+        return imgCopy;
+      })
+    );
+  }
 
   let currImgIndex = imgs.length - 1;
   function changeImage(nextImgIndex) {
@@ -84,7 +83,11 @@ function imageCarousel(
 
     indexMarkers.forEach((indexMarker) => {
       indexMarker.textContent = '◯';
-      const index = Number(indexMarker.dataset.index);
+      let index = Number(indexMarker.dataset.index);
+      if (nextImgIndex < originalImageLength) index %= originalImageLength;
+      if (nextImgIndex >= originalImageLength)
+        index = (index % originalImageLength) + originalImageLength;
+      indexMarker.dataset.index = index;
       if (index === nextImgIndex) indexMarker.textContent = '⬤';
     });
 
