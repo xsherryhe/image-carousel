@@ -1,4 +1,4 @@
-function imageCarousel(
+export default function imageCarousel(
   imgSrcs,
   { width = '70vw', height = '60vh', parentElement = document.body } = {}
 ) {

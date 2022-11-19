@@ -37,8 +37,8 @@
 .carousel-index-markers {
   color: white;
   position: absolute;
-  z-index: 1;
   bottom: 1rem;
+  z-index: 1;
   display: flex;
   gap: 1rem;
 }
