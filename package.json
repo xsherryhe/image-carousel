@@ -1,0 +1,23 @@
+{
+  "name": "image-carousel",
+  "version": "1.0.0",
+  "description": "A module that adds an image carousel to the DOM.",
+  "main": "image-carousel.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "image",
+    "carousel",
+    "dom"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.27.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "prettier": "2.7.1"
+  }
+}

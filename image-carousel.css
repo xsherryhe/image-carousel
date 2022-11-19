@@ -1,0 +1,48 @@
+.carousel {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.carousel-image-container {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.carousel-image {
+  object-fit: cover;
+  transition: transform 300ms ease-in-out;
+}
+
+.carousel-image.off-stage {
+  position: absolute;
+}
+
+.carousel-image.hidden {
+  visibility: hidden;
+}
+
+.carousel-arrow {
+  color: white;
+  cursor: pointer;
+  font-size: 5rem;
+}
+
+.carousel-index-markers {
+  color: white;
+  position: absolute;
+  z-index: 1;
+  bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.carousel-index-marker {
+  cursor: pointer;
+}
