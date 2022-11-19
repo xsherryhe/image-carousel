@@ -22,21 +22,6 @@ function imageCarousel(
     return img;
   });
 
-  // Make carousel long enough that at least one image is hidden off-stage so the carousel can 'spin'
-  /*
-  while (imgs.length < 3) {
-    const oldLength = imgs.length;
-    imgs.push(
-      ...imgs.map((img, i) => {
-        const imgCopy = img.cloneNode();
-        imgCopy.dataset.index = oldLength + i;
-        imgContainer.append(imgCopy);
-        return imgCopy;
-      })
-    );
-  }
-  */
-
   const indexMarkerContainer = document.createElement('div');
   indexMarkerContainer.classList.add('carousel-index-markers');
   carousel.append(indexMarkerContainer);
@@ -92,24 +77,24 @@ function imageCarousel(
   }
   changeImage(0);
 
-  function nextImage() {
+  function forwardImage() {
     changeImage((currImgIndex + 1) % imgs.length);
   }
 
-  function prevImage() {
+  function backImage() {
     changeImage((currImgIndex - 1 + imgs.length) % imgs.length);
   }
 
   const prevArrow = document.createElement('div');
   prevArrow.classList.add('carousel-arrow');
   prevArrow.textContent = '<';
-  prevArrow.addEventListener('click', prevImage);
+  prevArrow.addEventListener('click', backImage);
   imgContainer.insertAdjacentElement('beforebegin', prevArrow);
 
   const nextArrow = document.createElement('div');
   nextArrow.classList.add('carousel-arrow');
   nextArrow.textContent = '>';
-  nextArrow.addEventListener('click', nextImage);
+  nextArrow.addEventListener('click', forwardImage);
   imgContainer.insertAdjacentElement('afterend', nextArrow);
 
   indexMarkers.forEach((indexMarker) => {
@@ -118,5 +103,5 @@ function imageCarousel(
     );
   });
 
-  setInterval(nextImage, 5000);
+  setInterval(forwardImage, 5000);
 }
